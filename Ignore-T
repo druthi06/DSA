@@ -1,0 +1,34 @@
+def insertion_sort_with_threshold(arr, threshold):
+    n = len(arr)
+   
+    # Apply insertion sort, but skip elements > threshold
+    for i in range(1, n):
+        key = arr[i]
+       
+        # Skip elements greater than threshold
+        if key > threshold:
+            continue
+           
+        j = i - 1
+       
+        # Move elements that are greater than key
+        # to one position ahead of their current position
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+           
+        arr[j + 1] = key
+       
+    return arr
+
+# Main function to handle input/output
+def main():
+    n = int(input().strip())
+    arr = list(map(int, input().strip().split()))
+    threshold = int(input().strip())
+   
+    result = insertion_sort_with_threshold(arr, threshold)
+    print(' '.join(map(str, result)))
+
+if __name__ == "__main__":
+    main()
